@@ -27,4 +27,4 @@ const cockpit = (props) => {
     );
 }
 
-export default Radium(cockpit);
+export default React.memo(cockpit);
