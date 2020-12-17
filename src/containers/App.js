@@ -2,7 +2,9 @@ import React, { Component } from 'react';
  
 import Radium from 'radium';
 import './App.css';
-import Person from '../components/Persons/Person/Person';
+import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
+ 
 
 
 class App extends Component {
@@ -72,13 +74,10 @@ class App extends Component {
 
       persons = (
         <div>
-          {this.state.persons.map((person,index)=>{
-            return <Person 
-            click={()=>this.deletePersonHandler(index)} 
-            name={person.name} age={person.age} key={person.id}
-            changed={(event) => {this.changeNameHandler(event,person.id)}}
-            />
-          })}
+          <Persons 
+            persons={this.state.persons}
+            clicked={this.deletePersonHandler} 
+            changed={this.changeNameHandler} />
         </div>
       )
         
@@ -93,8 +92,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>Hi, React complete guide</h1>
-        <button style={style} onClick={this.togglePersonName}>Toggle Name</button>
+          <Cockpit styleCss={style} togglePerson={this.togglePersonName}/>
          {persons}
       </div>
     );
