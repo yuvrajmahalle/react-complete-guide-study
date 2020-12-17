@@ -4,7 +4,7 @@ import Radium from 'radium';
 const cockpit = (props) => {
     return(
         <div>
-            <h1>Hi, React complete guide</h1>
+            <h1>{props.title}</h1>
             <button style={props.styleCss} onClick={props.togglePerson}>Toggle Name</button>
         </div>
     );

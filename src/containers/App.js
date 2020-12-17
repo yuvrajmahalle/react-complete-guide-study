@@ -8,6 +8,10 @@ import Cockpit from '../components/Cockpit/Cockpit';
 
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    console.log('[App.js] constructor');
+  }
   state ={
     persons:[
       {id:"agsf",name:"ashish", age:23},
@@ -15,6 +19,19 @@ class App extends Component {
       {id:"vbncb",name:"xyz", age:24}
     ],
     showPersons:false
+  }
+
+  static getDerivedStateFromProps(props,state){
+    console.log('[App.js] getDerivedStateFormProps');
+    return state;
+  }
+
+ /* componentWillMount(){
+    console.log('[App.js] componentWillMount');
+  } */
+
+  componentDidMount(){
+    console.log('[App.js] componentDidMount');
   }
 
   switchNameHandler = (newName) =>{
@@ -57,6 +74,9 @@ class App extends Component {
   }
 
   render() {
+
+    console.log('[App.js] render');
+
     const style={
       backgroundColor:'green',
       color:'white',
@@ -92,7 +112,7 @@ class App extends Component {
 
     return (
       <div className="App">
-          <Cockpit styleCss={style} togglePerson={this.togglePersonName}/>
+          <Cockpit title={this.props.appTitle} styleCss={style} togglePerson={this.togglePersonName}/>
          {persons}
       </div>
     );
