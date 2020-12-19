@@ -4,7 +4,9 @@ import Radium from 'radium';
 import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
-import WithClass from '../hoc/WithClass';
+import withAuxAClass from '../hoc/withClass';
+import Aux from '../hoc/Auxiliary';
+import withClass from '../hoc/withClass';
  
 
 
@@ -111,12 +113,12 @@ class App extends Component {
     }
  
     return (
-      <WithClass classes={classes.App}>
+      <Aux classes={classes.App}>
           <Cockpit title={this.props.appTitle} styleCss={style} togglePerson={this.togglePersonName}/>
          {persons}
-      </WithClass>
+      </Aux>
     );
   }
 }
 
-export default Radium(App);
+export default withClass(App,classes.App);
